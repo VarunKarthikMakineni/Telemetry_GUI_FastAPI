@@ -1,0 +1,18 @@
+.gps-display{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+.gps-card{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.gps-title{
+    color: var(--font-color);
+}
+
+.gps-value{
+    color: var(--font-color-faint);
+}

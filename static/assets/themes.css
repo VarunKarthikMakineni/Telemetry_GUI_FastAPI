@@ -1,0 +1,29 @@
+:root {
+    --bg-color: #FFFFFF;
+    --font-color: #000000;
+    --font-color-faint: #444444;
+
+    --tile-color: #F0F0F0;
+    --tile-border-color: gray;
+    --tile-raised-color: #D8D8D8;
+    --tile-depressed-color: #C8C8C8;
+
+    --graph-font-color: olive;
+    --graph-axis-color: black;
+    --graph-grid-color: gray;
+}
+
+.dark-theme{
+    --bg-color: #000000;
+    --font-color: #FFFFFF;
+    --font-color-faint: #BBBBBB;
+
+    --tile-color: #141414;
+    --tile-border-color: darkslategray;
+    --tile-raised-color: #202020;
+    --tile-depressed-color: #101010;
+
+    --graph-font-color: darkseagreen;
+    --graph-axis-color: white;
+    --graph-grid-color: gray;
+}

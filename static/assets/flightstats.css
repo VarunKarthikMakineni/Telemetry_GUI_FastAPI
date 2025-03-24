@@ -1,0 +1,17 @@
+.flight-stats-display{
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.flight-stats-card{
+    background-color: var(--tile-depressed-color);
+    border-radius: 10px;
+    margin: 2px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr;
+    justify-content: center;
+    align-items: center;
+    color: var(--font-color);
+    padding: 5px;
+}

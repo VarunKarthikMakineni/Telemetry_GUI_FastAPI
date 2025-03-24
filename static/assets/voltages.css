@@ -1,0 +1,29 @@
+.voltages-panel{
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: 33% 33% 34%;
+}
+
+.voltage-card{
+    display: grid;
+    grid-template-columns: 65% 35%;
+    justify-content: right;
+    align-items: center;
+    border: 1px solid var(--tile-raised-color);
+    border-radius: 5px;
+    margin: 2px;
+    padding: 2px;
+    background-color: var(--tile-depressed-color);
+}
+
+.voltage-title{
+    color: var(--font-color-faint);
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.voltage-value{
+    color: red;
+    text-align: left;
+    font-weight: bold;
+}

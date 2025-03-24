@@ -1,0 +1,49 @@
+@font-face {
+    font-family: 'digital-7';
+    src: url('digital-7/digital-7.ttf');
+}
+
+.g-indicator-dial{
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+.g-indicator-needle{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    transition: transform 0.5;
+    top:0;
+    left:0;
+}
+
+.g-indicator-reading{
+    position: absolute;
+    align-self: center;
+    color: black;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3em;
+    /* Need a font that looks like a digital display */
+    font-family: 'digital-7';
+}
+
+.g-indicator-label{
+    position: absolute;
+    align-self: center;
+    color: black;
+    text-align: center;
+    /* border: 1px solid white; */
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1em;
+}
+
+.g-indicator-container{
+    position: relative;
+    height: 180px;
+    width: 180px;
+}

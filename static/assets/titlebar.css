@@ -1,0 +1,86 @@
+#title-bar{
+    justify-content: center;
+    align-items: center;
+    display: grid;
+    grid-template-columns: 20% 55% 22% 3%;
+    align-items: justify;
+}
+
+#datetime-display{
+    text-align: left;
+    font-size: 1.5em;
+    color: var(--font-color);
+}
+
+#title-display{
+    text-align: center;
+    font-size: 2em;
+    color: var(--font-color);
+}
+
+#status-display{
+    text-align: right;
+    font-size: 1.1em;
+    float: right;
+    color: red;
+    border: 2px solid;
+    border-color: red;
+    border-radius: 5px;
+    padding: 2px 5px;
+
+}
+
+#theme-switcher{
+    margin-left: 5px;
+    height: 50%;
+    aspect-ratio: 1;
+    color: var(--font-color);
+    border: 1px solid;
+    border-radius: 5px;
+    background-color: var(--tile-raised-color);
+}
+
+#theme-switcher:active{
+    background-color: var(--tile-depressed-color);
+}
+
+#theme-switcher:hover{
+    cursor: pointer;
+}
+
+/* The rest of this code was copied from the website https://toggles.dev/ */
+.theme-toggle {
+    --duration: 500ms;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+.theme-toggle.theme-toggle--reversed .theme-toggle__classic {
+    transform: scale(-1, 1);
+}
+
+.theme-toggle__classic path {
+    transition: transform calc(var(--duration) * 0.8) cubic-bezier(0, 0, 0.15, 1.25);
+    transform-origin: center;
+}
+
+.theme-toggle__classic g path {
+    transition: opacity calc(var(--duration) * 0.8), transform calc(var(--duration) * 0.8);
+    transition-delay: calc(var(--duration) * 0.2);
+}
+
+.theme-toggle__classic :first-child path {
+    transition: transform calc(var(--duration) * 0.8), d calc(var(--duration) * 0.8);
+}
+
+.theme-toggle--toggled .theme-toggle__classic g path {
+    transform: scale(0.5) rotate(45deg);
+    opacity: 0;
+    transition-delay: 0s;
+}
+
+.theme-toggle--toggled .theme-toggle__classic :first-child path {
+    d: path("M-12 5h30a1 1 0 0 0 9 13v24h-39Z");
+    transition-delay: calc(var(--duration) * 0.2);
+}

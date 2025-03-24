@@ -1,0 +1,21 @@
+.diag-messages-display {
+    display: grid;
+    grid-template-rows: 30px 1fr;
+    grid-template-columns: 1fr;
+    grid-template-areas: "title"
+                         "messages";
+}
+
+.diag-title-bar {
+    grid-area: "title";
+    color: var(--font-color);
+    font-weight: 600;
+}
+
+.diag-messages-container {
+    background-color: var(--tile-depressed-color);
+    border: 1px solid var(--tile-raised-color);
+    grid-area: "messages";
+    border-radius: 5px;
+    overflow-y: scroll;
+}

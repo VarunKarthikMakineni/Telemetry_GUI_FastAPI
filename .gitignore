@@ -1,0 +1,7 @@
+/.venv
+/agastya_data.txt
+/cloc-2.04.exe
+/requirements.txt
+/sample_stream_data.csv
+/stream.py
+/__pycache__

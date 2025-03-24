@@ -1,0 +1,7 @@
+.state-display{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--font-color);
+    font-size: 2em;
+}

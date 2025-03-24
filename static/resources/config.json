@@ -1,0 +1,117 @@
+{
+    "state" : {
+    "0" : "Pad",
+    "1" : "Boost",
+    "2" : "Coast",
+    "3" : "Drogue",
+    "4" : "Main",
+    "5" : "Landed"
+    },
+
+    "status":{
+        "0" : {
+            "status_text" : "Status: Ground Station Disconnected",
+            "status_color" : "red"
+        },
+        "1" : {
+            "status_text" : "Status: Ground Station Connected",
+            "status_color" : "orange"
+        },
+        "2" : {
+            "status_text" : "Status: Connected",
+            "status_color" : "green"
+        }
+    },
+
+    "countdown":{
+        "reset": 30
+    },
+
+    "voltages":{
+
+        "battery-voltage": {
+            "name": "Batt. Voltage",
+            "unit": "V",
+            "limits": [1,3,5],
+            "colors": ["red","orange","green"]
+        },
+
+        "main-voltage": {
+            "name": "Main Voltage",
+            "unit": "V",
+            "limits": [1,3,5],
+            "colors": ["red","orange","green"]
+        },
+
+        "5v-voltage": {
+            "name": "5V Voltage",
+            "unit": "V",
+            "limits": [1,3,5],
+            "colors": ["red","orange","green"]
+        },
+
+        "3.3v-voltage": {
+            "name": "3.3V Voltage",
+            "unit": "V",
+            "limits": [1,3,5],
+            "colors": ["red","orange","green"]
+        },
+        
+        "3.3v-current": {
+            "name": "3.3V Current",
+            "unit": "A",
+            "limits": [1,3,5],
+            "colors": ["red","orange","green"]
+        },
+
+        "5v-current": {
+            "name": "5V Current",
+            "unit": "A",
+            "limits": [1,3,5],
+            "colors": ["red","orange","green"]
+        },
+
+        "main-current": {
+            "name": "Main Current",
+            "unit": "A",
+            "limits": [1,3,5],
+            "colors": ["red","orange","green"]
+        },
+
+        "battery-current": {
+            "name": "Batt. Current",
+            "unit": "A",
+            "limits": [1,3,5],
+            "colors": ["red","orange","green"]
+        },
+
+        "main-power": {
+            "name": "Main Power",
+            "unit": "W",
+            "limits": [1,3,5],
+            "colors": ["red","orange","green"]
+        },
+
+        "battery-power": {
+            "name": "Batt. Power",
+            "unit": "W",
+            "limits": [1,3,5],
+            "colors": ["red","orange","green"]
+        },
+
+        "5v-power": {
+            "name": "5V Power",
+            "unit": "W",
+            "limits": [1,3,5],
+            "colors": ["red","orange","green"]
+        },
+
+        "3.3v-power": {
+            "name": "3.3V Power",
+            "unit": "W",
+            "limits": [1,3,5],
+            "colors": ["red","orange","green"]
+        }
+    }
+
+}

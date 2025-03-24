@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>IITB RT Telemetry Dashboard</title>
+        <link rel="stylesheet" href="assets/master.css"> <!-- Link to your CSS file -->
+    </head>
+    <body>
+        <div class="total-layout">
+            <!-- Title Bar -->
+            <div class="tile title-bar" id="title-bar">
+                <div id="datetime-display">23-05-2025 12:00:00 IST</div>
+                <div id="title-display">IITB Rocket Team Telemetry Display</div>
+                <div>
+                    <div id="status-display">Status: Uninitialised</div>
+                </div>
+                <!-- The following button is copied from https://toggles.dev/ -->
+                <button
+                    class="theme-switcher theme-toggle"
+                    id="theme-switcher"
+                    type="button"
+                    title="Toggle theme"
+                    aria-label="Toggle theme">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            aria-hidden="true"
+                            width="1em"
+                            height="1em"
+                            fill="currentColor"
+                            stroke-linecap="round"
+                            class="theme-toggle__classic"
+                            viewBox="0 0 32 32">
+                            <clipPath id="theme-toggle__classic__cutout">
+                            <path d="M0-5h30a1 1 0 0 0 9 13v24H0Z" />
+                            </clipPath>
+                            <g clip-path="url(#theme-toggle__classic__cutout)">
+                            <circle cx="16" cy="16" r="9.34" />
+                            <g stroke="currentColor" stroke-width="1.5">
+                                <path d="M16 5.5v-4" />
+                                <path d="M16 30.5v-4" />
+                                <path d="M1.5 16h4" />
+                                <path d="M26.5 16h4" />
+                                <path d="m23.4 8.6 2.8-2.8" />
+                                <path d="m5.7 26.3 2.9-2.9" />
+                                <path d="m5.8 5.8 2.8 2.8" />
+                                <path d="m23.4 23.4 2.9 2.9" />
+                            </g>
+                            </g>
+                        </svg>
+                </button>
+            </div>
+            
+            <!-- State Display -->
+            <div class="tile state-display" id="state-display">Uninitialised</div>
+            
+            <!-- Timings Display -->
+            <div class="tile timings-display" id="timings-display">
+                <button class="reset-button" id="countdown-reset-button"><img src="assets/reset_button.svg" width="100%" height="100%"></button>
+                <button class="start-button" id="countdown-start-button"><img src="assets/play_button.svg" width="100%" height="100%"></button>
+                <div class="countdown-display" id="countdown-display">T-05:00</div>
+                <div class="time-since-gs-update-display" id="time-since-gs-update-display">GS: 00:00</div>
+                <div class="time-since-rocket-update-display" id="time-since-rocket-update-display">Rocket: 00:00</div>
+            </div>
+            
+            <!-- Switches Display -->
+            <div class="tile flight-stats-display" id="flight-stats-display">
+                <div class="flight-stats-card">
+                    <div class="flight-stats-title" style="grid-column: span 2; display: flex; justify-content: center; align-items: center; height: 10px;">Flight Statistics</div>
+                </div>
+                <div class="flight-stats-card">
+                    <div class="flight-stats-title">Apogee (Baro)</div>
+                    <div class="flight-stats-value" id="flight-stats-apogee-baro">0</div>
+                </div>
+                <div class="flight-stats-card">
+                    <div class="flight-stats-title">Apogee (GPS)</div>
+                    <div class="flight-stats-value" id="flight-stats-apogee-gps">0</div>
+                </div>
+                <div class="flight-stats-card">
+                    <div class="flight-stats-title">Peak acc (m/s^2)</div>
+                    <div class="flight-stats-value" id="flight-stats-peak-acc">0</div>
+                </div>
+                <div class="flight-stats-card">
+                    <div class="flight-stats-title">Max vel</div>
+                    <div class="flight-stats-value" id="flight-stats-max-vel">0</div>
+                </div>
+            </div>
+            
+            <!-- Indicators Panel -->
+            <div class="tile indicators-panel" id="indicators-panel">
+                <div class="dial-indicator-container" name="g-indicator" needlecolor="darkred" dialcolor="#303040" title="G Force"></div>
+                <div class="dial-indicator-container" name="temp" needlecolor="orange" dialcolor="#303040" title="Temp"></div>
+            </div>
+            
+            <!-- Voltages Panel -->
+            <div class="tile voltages-panel" id="voltages-panel">
+            </div>
+            
+            <!-- Diagnostic Messages Display -->
+            <div class="tile diag-messages-display" id="diag-messages-display">
+                <div class="diag-title-bar">Diagnostic Messages</div>
+                <div class="diag-messages-container" id="diag-messages-container"></div>
+            </div>
+            
+            <!-- Acceleration Graph -->
+            <div class="tile accel-graph-container graph-container" id="accel-graph-container">
+                <!-- Plotly will draw the graph here -->
+            </div>
+            
+            <!-- Gyro Graph -->
+            <div class="tile gyro-graph-container graph-container" id="gyro-graph-container">
+                <!-- Plotly will draw the graph here -->
+            </div>
+            
+            <!-- Altitude Graph -->
+            <div class="tile altitude-graph-container graph-container" id="altitude-graph-container">
+                <!-- Plotly will draw the graph here -->
+            </div> 
+
+            <!-- GPS data -->
+            <div class="tile gps-display" id="gps-display">
+                <div class="gps-card">
+                    <div class="gps-title">Latitude</div>
+                    <div class="gps-value" id="gps-latitude">0</div>
+                </div>
+                <div class="gps-card">
+                    <div class="gps-title">Longitude</div>
+                    <div class="gps-value" id="gps-longitude">0</div>
+                </div>
+                <div class="gps-card">
+                    <div class="gps-title">Altitude</div>
+                    <div class="gps-value" id="gps-altitude">0</div>
+                </div>
+                <div class="gps-card">
+                    <div class="gps-title">Speed</div>
+                    <div class="gps-value" id="gps-speed">0</div>
+                </div>
+                <div class="gps-card">
+                    <div class="gps-title">Course</div>
+                    <div class="gps-value" id="gps-course">0</div>
+                </div>
+                <div class="gps-card">
+                    <div class="gps-title">Satellites</div>
+                    <div class="gps-value" id="gps-satellites">0</div>
+                </div>
+            </div>
+
+        </div>
+        
+        
+    </body>
+
+    <!-- Load all the Plotly scripts -->
+    <script src="resources/plotly-3.0.0.min.js"></script> <!-- Include Plotly for graphs -->
+    <script src="resources/load_helpers.js"></script>
+    <script src="resources/load.js"></script>
+</html>
