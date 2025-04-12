@@ -15,40 +15,6 @@
                 <div>
                     <div id="status-display">Status: Uninitialised</div>
                 </div>
-                <!-- The following button is copied from https://toggles.dev/ -->
-                <button
-                    class="theme-switcher theme-toggle"
-                    id="theme-switcher"
-                    type="button"
-                    title="Toggle theme"
-                    aria-label="Toggle theme">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            aria-hidden="true"
-                            width="1em"
-                            height="1em"
-                            fill="currentColor"
-                            stroke-linecap="round"
-                            class="theme-toggle__classic"
-                            viewBox="0 0 32 32">
-                            <clipPath id="theme-toggle__classic__cutout">
-                            <path d="M0-5h30a1 1 0 0 0 9 13v24H0Z" />
-                            </clipPath>
-                            <g clip-path="url(#theme-toggle__classic__cutout)">
-                            <circle cx="16" cy="16" r="9.34" />
-                            <g stroke="currentColor" stroke-width="1.5">
-                                <path d="M16 5.5v-4" />
-                                <path d="M16 30.5v-4" />
-                                <path d="M1.5 16h4" />
-                                <path d="M26.5 16h4" />
-                                <path d="m23.4 8.6 2.8-2.8" />
-                                <path d="m5.7 26.3 2.9-2.9" />
-                                <path d="m5.8 5.8 2.8 2.8" />
-                                <path d="m23.4 23.4 2.9 2.9" />
-                            </g>
-                            </g>
-                        </svg>
-                </button>
             </div>
             
             <!-- State Display -->
@@ -59,6 +25,7 @@
                 <button class="reset-button" id="countdown-reset-button"><img src="assets/reset_button.svg" width="100%" height="100%"></button>
                 <button class="start-button" id="countdown-start-button"><img src="assets/play_button.svg" width="100%" height="100%"></button>
                 <div class="countdown-display" id="countdown-display">T-05:00</div>
+                <div class="time-since-server-update-display" id="time-since-server-update-display">Server: 00:00</div>
                 <div class="time-since-gs-update-display" id="time-since-gs-update-display">GS: 00:00</div>
                 <div class="time-since-rocket-update-display" id="time-since-rocket-update-display">Rocket: 00:00</div>
             </div>
@@ -73,8 +40,8 @@
                     <div class="flight-stats-value" id="flight-stats-apogee-baro">0</div>
                 </div>
                 <div class="flight-stats-card">
-                    <div class="flight-stats-title">Apogee (GPS)</div>
-                    <div class="flight-stats-value" id="flight-stats-apogee-gps">0</div>
+                    <div class="flight-stats-title">Apogee Time</div>
+                    <div class="flight-stats-value" id="flight-stats-apogee-time">0</div>
                 </div>
                 <div class="flight-stats-card">
                     <div class="flight-stats-title">Peak acc (m/s^2)</div>
@@ -89,7 +56,8 @@
             <!-- Indicators Panel -->
             <div class="tile indicators-panel" id="indicators-panel">
                 <div class="dial-indicator-container" name="g-indicator" needlecolor="darkred" dialcolor="#303040" title="G Force"></div>
-                <div class="dial-indicator-container" name="temp" needlecolor="orange" dialcolor="#303040" title="Temp"></div>
+                <div class="dial-indicator-container" name="airspeed" needlecolor="blue" dialcolor="#303040" title="Airspeed (m/s)"></div>
+                <div class="dial-indicator-container" name="temp" needlecolor="orange" dialcolor="#303040" title="Temp (°C)"></div>
             </div>
             
             <!-- Voltages Panel -->
@@ -102,8 +70,13 @@
                 <div class="diag-messages-container" id="diag-messages-container"></div>
             </div>
             
-            <!-- Acceleration Graph -->
-            <div class="tile accel-graph-container graph-container" id="accel-graph-container">
+            <!-- Acceleration Graph from BNO -->
+            <div class="tile accel-bno-graph-container graph-container" id="accel-bno-graph-container">
+                <!-- Plotly will draw the graph here -->
+            </div>
+
+            <!-- Acceleration Graph from Kx -->
+            <div class="tile accel-kx-graph-container graph-container" id="accel-kx-graph-container">
                 <!-- Plotly will draw the graph here -->
             </div>
             
@@ -115,7 +88,12 @@
             <!-- Altitude Graph -->
             <div class="tile altitude-graph-container graph-container" id="altitude-graph-container">
                 <!-- Plotly will draw the graph here -->
-            </div> 
+            </div>
+
+            <!-- Velocity Graph -->
+            <div class="tile vel-graph-container graph-container" id="vel-graph-container">
+                <!-- Plotly will draw the graph here -->
+            </div>
 
             <!-- GPS data -->
             <div class="tile gps-display" id="gps-display">
@@ -145,8 +123,87 @@
                 </div>
             </div>
 
-        </div>
-        
+            <!-- Telemetry Source -->
+            <div class="tile telemetry-source-container">
+                <div class="mode-selector">
+                    <button class="mode-selector-button" id="mode-selector-live">Live</button>
+                    <button class="mode-selector-button" id="mode-selector-replay">Replay</button>
+                </div>
+
+                <!-- The following button is copied from https://toggles.dev/ -->
+                <button class="generic-button theme-toggle"
+                    id="theme-switcher"
+                    type="button"
+                    title="Toggle theme"
+                    aria-label="Toggle theme">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            aria-hidden="true"
+                            width="80%"
+                            height="80%"
+                            fill="currentColor"
+                            stroke-linecap="round"
+                            class="theme-toggle__classic"
+                            viewBox="0 0 32 32">
+                            <clipPath id="theme-toggle__classic__cutout">
+                            <path d="M0-5h30a1 1 0 0 0 9 13v24H0Z" />
+                            </clipPath>
+                            <g clip-path="url(#theme-toggle__classic__cutout)">
+                            <circle cx="16" cy="16" r="9.34" />
+                            <g stroke="currentColor" stroke-width="1.5">
+                                <path d="M16 5.5v-4" />
+                                <path d="M16 30.5v-4" />
+                                <path d="M1.5 16h4" />
+                                <path d="M26.5 16h4" />
+                                <path d="m23.4 8.6 2.8-2.8" />
+                                <path d="m5.7 26.3 2.9-2.9" />
+                                <path d="m5.8 5.8 2.8 2.8" />
+                                <path d="m23.4 23.4 2.9 2.9" />
+                            </g>
+                            </g>
+                        </svg>
+                </button>
+
+                <div class="telemetry-options-live" id="telemetry-options-live">
+                    <div style="display: flex; gap: 5px; margin-top: 5px; overflow: hidden;">
+                        <input type="text" id="telemetry-filename-input" placeholder="Log file name" style="width: 85%">
+                        <button class="generic-button" id="telemetry-filename-set-button" style="width: 15%;">Set</button>
+                    </div>
+                    <div style="display: flex; gap: 5px; margin-top: 5px; align-items: center; overflow: hidden;">
+                        <span style="white-space: nowrap; font-size: clamp(6px, 2vw, 14px); width: fit-content">In use:</span>
+                        <span id="telemetry-file-in-use" style="white-space: nowrap; font-size: clamp(6px, 2vw, 14px); width: fit-content; text-overflow: ellipsis; overflow: hidden;">FKaJS:DasdfasdfasdfasdfasdfasdfLFKJ</span>
+                        <button class="generic-button" id="telemetry-filename-check-button" style="width: 15%; margin-left: auto; align-self: stretch;">Check</button>
+                    </div>
+                </div>
+
+                <div class="telemetry-options-replay" id="telemetry-options-replay" style="display: none;">
+                    <div style="display: flex; gap: 5px; margin-top: 5px; overflow: hidden;">
+                        <select id="replay-files-dropdown" style="width: 85%;">
+                            <option value="default" disabled>Select a file</option>
+                        </select>
+                        <button class="generic-button" id="replay-filename-set-button" style="width: 15%;">Set</button>
+                    </div>
+                    <div style="display: flex; gap: 5px; margin-top: 5px; align-items: center; overflow: hidden;">
+                        <span style="white-space: nowrap; font-size: clamp(6px, 2vw, 14px); width: fit-content">In use:</span>
+                        <span id="replay-file-in-use" style="white-space: nowrap; font-size: clamp(6px, 2vw, 14px); width: fit-content; text-overflow: ellipsis; overflow: hidden;">FKaJS:DasdfasdfasdfasdfasdfasdfLFKJ</span>
+                        <button class="generic-button" id="replay-filename-check-button" style="width: 15%; margin-left: auto; align-self: stretch;">Check</button>
+                    </div>
+                    <div style="display: flex; gap: 5px; margin-top: 5px; align-items: center; overflow: hidden;">
+                        <button class="generic-button" id="telemetry-replay-pause-button" style="align-self: stretch; width:10%;">
+                            <img src="/assets/pause_button.svg" width="80%" height="80%">
+                        </button>
+                        <button class="generic-button" id="telemetry-replay-play-button" style="align-self: stretch; width: 10%;">
+                            <img src="/assets/play_button.svg" width="100%" height="100%">
+                        </button>
+                        <input type="text" id="telemetry-rowid-input" placeholder="Row ID" style="width: 15%; background-color: var(--bg-color); color: var(--font-color);">
+                        <span id="telemetry-max-rowid" style="white-space: nowrap; font-size: clamp(6px, 2vw, 14px); width: fit-content; text-overflow: ellipsis; overflow: hidden;">FKaJS</span>
+                        <button class="generic-button" id="replay-rowid-set-button" style="width: 15%; margin-left: auto; align-self: stretch;">Set</button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>        
         
     </body>
 

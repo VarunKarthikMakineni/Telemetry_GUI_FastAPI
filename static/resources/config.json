@@ -9,15 +9,20 @@
     },
 
     "status":{
+
         "0" : {
+            "status_text" : "Status: Server Disconnected",
+            "status_color" : "darkred"
+        },
+        "1" : {
             "status_text" : "Status: Ground Station Disconnected",
             "status_color" : "red"
         },
-        "1" : {
+        "2" : {
             "status_text" : "Status: Ground Station Connected",
             "status_color" : "orange"
         },
-        "2" : {
+        "3" : {
             "status_text" : "Status: Connected",
             "status_color" : "green"
         }
@@ -29,88 +34,88 @@
 
     "voltages":{
 
-        "battery-voltage": {
+        "volt_batt": {
             "name": "Batt. Voltage",
+            "unit": "V",
+            "limits": [7.8,7.9,8.1],
+            "colors": ["red","orange","green"]
+        },
+
+        "volt_3v3": {
+            "name": "3v3 Voltage",
             "unit": "V",
             "limits": [1,3,5],
             "colors": ["red","orange","green"]
         },
 
-        "main-voltage": {
+        "volt_drogue": {
+            "name": "Drogue Volt.",
+            "unit": "V",
+            "limits": [1,3,5],
+            "colors": ["red","orange","green"]
+        },
+
+        "volt_main": {
             "name": "Main Voltage",
             "unit": "V",
             "limits": [1,3,5],
             "colors": ["red","orange","green"]
         },
-
-        "5v-voltage": {
-            "name": "5V Voltage",
-            "unit": "V",
-            "limits": [1,3,5],
-            "colors": ["red","orange","green"]
-        },
-
-        "3.3v-voltage": {
-            "name": "3.3V Voltage",
-            "unit": "V",
-            "limits": [1,3,5],
-            "colors": ["red","orange","green"]
-        },
         
-        "3.3v-current": {
-            "name": "3.3V Current",
-            "unit": "A",
+        "volt_reg1": {
+            "name": "Reg 1 Voltage",
+            "unit": "V",
+            "limits": [5,6.8,8],
+            "colors": ["red","orange","green"]
+        },
+
+        "volt_reg2": {
+            "name": "Reg 2 Voltage",
+            "unit": "V",
+            "limits": [5,6.8,8],
+            "colors": ["red","orange","green"]
+        },
+
+        "volt_reg3": {
+            "name": "Reg 3 Voltage",
+            "unit": "V",
+            "limits": [5,6.8,8],
+            "colors": ["red","orange","green"]
+        },
+
+        "volt_reg4": {
+            "name": "Reg 4 Voltage",
+            "unit": "V",
+            "limits": [5,6.8,8],
+            "colors": ["red","orange","green"]
+        },
+
+        "volt_ign1": {
+            "name": "Ign 1 Voltage",
+            "unit": "V",
             "limits": [1,3,5],
             "colors": ["red","orange","green"]
         },
 
-        "5v-current": {
-            "name": "5V Current",
-            "unit": "A",
-            "limits": [1,3,5],
-            "colors": ["red","orange","green"]
-        },
-
-        "main-current": {
-            "name": "Main Current",
-            "unit": "A",
-            "limits": [1,3,5],
-            "colors": ["red","orange","green"]
-        },
-
-        "battery-current": {
-            "name": "Batt. Current",
-            "unit": "A",
-            "limits": [1,3,5],
-            "colors": ["red","orange","green"]
-        },
-
-        "main-power": {
-            "name": "Main Power",
-            "unit": "W",
-            "limits": [1,3,5],
-            "colors": ["red","orange","green"]
-        },
-
-        "battery-power": {
-            "name": "Batt. Power",
-            "unit": "W",
+        "volt_ign2": {
+            "name": "Ign 2 Voltage",
+            "unit": "V",
             "limits": [1,3,5],
             "colors": ["red","orange","green"]
         },
 
         "5v-power": {
-            "name": "5V Power",
+            "name": "Unused",
             "unit": "W",
             "limits": [1,3,5],
-            "colors": ["red","orange","green"]
+            "colors": ["grey","grey","grey"]
         },
 
         "3.3v-power": {
-            "name": "3.3V Power",
+            "name": "Unused",
             "unit": "W",
             "limits": [1,3,5],
-            "colors": ["red","orange","green"]
+            "colors": ["grey","grey","grey"]
         }
     }
 

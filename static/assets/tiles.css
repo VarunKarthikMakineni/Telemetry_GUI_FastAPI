@@ -16,15 +16,16 @@
     gap: 0px 0px;
     grid-auto-flow: row;
     grid-template-areas:
-      "title-bar title-bar title-bar title-bar title-bar title-bar title-bar title-bar title-bar title-bar title-bar title-bar title-bar title-bar title-bar title-bar title-bar title-bar"
-      "state-display state-display state-display indicators-panel indicators-panel indicators-panel indicators-panel indicators-panel indicators-panel indicators-panel altitude-graph-container altitude-graph-container altitude-graph-container altitude-graph-container . . . ."
-      "timings-display timings-display timings-display indicators-panel indicators-panel indicators-panel indicators-panel indicators-panel indicators-panel indicators-panel altitude-graph-container altitude-graph-container altitude-graph-container altitude-graph-container . . . ."
-      "timings-display timings-display timings-display indicators-panel indicators-panel indicators-panel indicators-panel indicators-panel indicators-panel indicators-panel accel-graph-container accel-graph-container accel-graph-container accel-graph-container . . . ."
-      "flight-stats-display flight-stats-display flight-stats-display indicators-panel indicators-panel indicators-panel indicators-panel indicators-panel indicators-panel indicators-panel accel-graph-container accel-graph-container accel-graph-container accel-graph-container . . . ."
-      "flight-stats-display flight-stats-display flight-stats-display indicators-panel indicators-panel indicators-panel indicators-panel indicators-panel indicators-panel indicators-panel gyro-graph-container gyro-graph-container gyro-graph-container gyro-graph-container . . . ."
-      "flight-stats-display flight-stats-display flight-stats-display indicators-panel indicators-panel indicators-panel indicators-panel indicators-panel indicators-panel indicators-panel gyro-graph-container gyro-graph-container gyro-graph-container gyro-graph-container . . . ."
-      "diag-messages-display diag-messages-display diag-messages-display voltages-panel voltages-panel voltages-panel voltages-panel voltages-panel voltages-panel voltages-panel voltages-panel voltages-panel voltages-panel voltages-panel gps-display gps-display gps-display gps-display"
-      "diag-messages-display diag-messages-display diag-messages-display voltages-panel voltages-panel voltages-panel voltages-panel voltages-panel voltages-panel voltages-panel voltages-panel voltages-panel voltages-panel voltages-panel gps-display gps-display gps-display gps-display";
+        
+    "title-bar title-bar title-bar title-bar title-bar title-bar title-bar title-bar title-bar title-bar title-bar title-bar title-bar title-bar title-bar title-bar title-bar title-bar"
+    "state-display state-display state-display indicators-panel indicators-panel indicators-panel indicators-panel indicators-panel indicators-panel indicators-panel altitude-graph-container altitude-graph-container altitude-graph-container altitude-graph-container telemetry-source telemetry-source telemetry-source telemetry-source"
+    "timings-display timings-display timings-display indicators-panel indicators-panel indicators-panel indicators-panel indicators-panel indicators-panel indicators-panel altitude-graph-container altitude-graph-container altitude-graph-container altitude-graph-container telemetry-source telemetry-source telemetry-source telemetry-source"
+    "timings-display timings-display timings-display indicators-panel indicators-panel indicators-panel indicators-panel indicators-panel indicators-panel indicators-panel vel-graph-container vel-graph-container vel-graph-container vel-graph-container bno-graph-container bno-graph-container bno-graph-container bno-graph-container"
+    "flight-stats-display flight-stats-display flight-stats-display indicators-panel indicators-panel indicators-panel indicators-panel indicators-panel indicators-panel indicators-panel vel-graph-container vel-graph-container vel-graph-container vel-graph-container bno-graph-container bno-graph-container bno-graph-container bno-graph-container"
+    "flight-stats-display flight-stats-display flight-stats-display indicators-panel indicators-panel indicators-panel indicators-panel indicators-panel indicators-panel indicators-panel gyro-graph-container gyro-graph-container gyro-graph-container gyro-graph-container kx-graph-container kx-graph-container kx-graph-container kx-graph-container"
+    "flight-stats-display flight-stats-display flight-stats-display indicators-panel indicators-panel indicators-panel indicators-panel indicators-panel indicators-panel indicators-panel gyro-graph-container gyro-graph-container gyro-graph-container gyro-graph-container kx-graph-container kx-graph-container kx-graph-container kx-graph-container"
+    "diag-messages-display diag-messages-display diag-messages-display voltages-panel voltages-panel voltages-panel voltages-panel voltages-panel voltages-panel voltages-panel voltages-panel voltages-panel voltages-panel voltages-panel gps-display gps-display gps-display gps-display"
+    "diag-messages-display diag-messages-display diag-messages-display voltages-panel voltages-panel voltages-panel voltages-panel voltages-panel voltages-panel voltages-panel voltages-panel voltages-panel voltages-panel voltages-panel gps-display gps-display gps-display gps-display"; 
   }
   
   .title-bar { grid-area: title-bar; }
@@ -35,7 +36,11 @@
   
   .altitude-graph-container { grid-area: altitude-graph-container; }
   
-  .accel-graph-container { grid-area: accel-graph-container; }
+  .accel-bno-graph-container { grid-area: bno-graph-container; }
+
+  .accel-kx-graph-container { grid-area: kx-graph-container; }
+
+  .vel-graph-container { grid-area: vel-graph-container; }
   
   .gyro-graph-container { grid-area: gyro-graph-container; }
   
@@ -49,3 +54,4 @@
   
   .gps-display { grid-area: gps-display; }
   
+  .telemetry-source-container { grid-area: telemetry-source; }

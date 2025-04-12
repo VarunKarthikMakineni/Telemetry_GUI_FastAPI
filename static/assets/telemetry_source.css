@@ -1,0 +1,107 @@
+.telemetry-source-container {
+    display: grid;
+    grid-template-columns: 4fr 4fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-gap: 3px;
+    grid-template-areas: "mode-selector mode-selector theme-switcher"
+                         "source-display source-display source-display"
+                         "source-display source-display source-display"
+                         "source-display source-display source-display";
+    color: var(--font-color);
+    word-wrap: normal;
+}
+
+.mode-selector {
+    display: grid;
+    grid-gap: 3px;  
+    grid-area: mode-selector;
+    grid-template-columns: 1fr 1fr;
+}
+
+.mode-selector-button {
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 5px;
+    text-align: center;
+    color: var(--font-color);
+    font-weight: bold;
+}
+
+.mode-selector-button:active{
+    background-color: var(--tile-depressed-color);
+}
+
+.mode-selector-button:hover{
+    cursor: pointer;
+}
+
+#mode-selector-live{
+    background-color: #00DD00;
+}
+
+#mode-selector-replay{
+    background-color: #835100;
+}
+
+.telemetry-options-live{
+    grid-area: source-display;
+    display: grid;
+    grid-template-rows: 50% 50%;
+}
+
+#telemetry-filename-input{
+    color: var(--font-color);
+    width: 80%;
+    border: 1px solid;
+    border-radius: 2px;
+    padding: 5px;
+    background-color: var(--bg-color);
+}
+
+.telemetry-options-replay{
+    grid-area: source-display;
+    display: grid;
+    grid-template-rows: 34% 33% 33%;
+}
+
+#replay-files-dropdown{
+    color: var(--font-color);
+    background-color: var(--bg-color);
+}
+
+/* The rest of this code was copied from the website https://toggles.dev/ */
+.theme-toggle {
+    grid-area: theme-switcher;
+    aspect-ratio: 1;
+    --duration: 500ms;
+    cursor: pointer;
+}
+
+.theme-toggle.theme-toggle--reversed .theme-toggle__classic {
+    transform: scale(-1, 1);
+}
+
+.theme-toggle__classic path {
+    transition: transform calc(var(--duration) * 0.8) cubic-bezier(0, 0, 0.15, 1.25);
+    transform-origin: center;
+}
+
+.theme-toggle__classic g path {
+    transition: opacity calc(var(--duration) * 0.8), transform calc(var(--duration) * 0.8);
+    transition-delay: calc(var(--duration) * 0.2);
+}
+
+.theme-toggle__classic :first-child path {
+    transition: transform calc(var(--duration) * 0.8), d calc(var(--duration) * 0.8);
+}
+
+.theme-toggle--toggled .theme-toggle__classic g path {
+    transform: scale(0.5) rotate(45deg);
+    opacity: 0;
+    transition-delay: 0s;
+}
+
+.theme-toggle--toggled .theme-toggle__classic :first-child path {
+    d: path("M-12 5h30a1 1 0 0 0 9 13v24h-39Z");
+    transition-delay: calc(var(--duration) * 0.2);
+}

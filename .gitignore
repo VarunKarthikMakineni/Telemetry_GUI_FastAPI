@@ -5,3 +5,5 @@
 /sample_stream_data.csv
 /stream.py
 /__pycache__
+/dbtest.py
+/logs

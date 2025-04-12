@@ -1,6 +1,6 @@
 //  ###################### GRAPHS SECTION ######################
 
-function drawAccelGraph(){
+function drawAccelBNOGraph(){
 
     const accelPlotData = [
         { x: [], y: [], mode: "lines", name: "x", line: { color: "rgba(200,50,50,1)" }, fill: "tozeroy", fillcolor: "rgba(200,50,50,0.25)" },
@@ -22,7 +22,7 @@ function drawAccelGraph(){
                  linecolor: "rgb(255,255,255)",
                  gridcolor: "rgb(120,120,120)",
                  tickfont: { size: 10 },
-                 title: {text: "Acc (m/s^2)", standoff: 10, font: {size: 10}},
+                 title: {text: " BNO Acc (m/s^2)", standoff: 10, font: {size: 10}},
                  side: "right"},
         showlegend: true,
         legend: {
@@ -40,7 +40,51 @@ function drawAccelGraph(){
         responsive: true,
     };
 
-    Plotly.newPlot("accel-graph-container", accelPlotData, accelPlotLayout, accelPLotConfig);
+    Plotly.newPlot("accel-bno-graph-container", accelPlotData, accelPlotLayout, accelPLotConfig);
+
+}
+
+function drawAccelKxGraph(){
+
+    const accelPlotData = [
+        { x: [], y: [], mode: "lines", name: "x", line: { color: "rgba(200,50,50,1)" }, fill: "tozeroy", fillcolor: "rgba(200,50,50,0.25)" },
+        { x: [], y: [], mode: "lines", name: "y", line: { color: "rgba(50,200,50,1)" }, fill: "tozeroy", fillcolor: "rgba(50,200,50,0.25)" },
+        { x: [], y: [], mode: "lines", name: "z", line: { color: "rgba(50,50,200,1)" }, fill: "tozeroy", fillcolor: "rgba(50,50,200,0.25)" },
+        { x: [], y: [], mode: "lines", name: "res", line: { color: "rgba(127,127,127,1)" }, fill: "tozeroy", fillcolor: "rgba(127,127,127,0.25)" },
+    ];
+
+    const accelPlotLayout = {
+        paper_bgcolor: "transparent",
+        plot_bgcolor: "#141414",
+        font: { size: 10, color: "darkseagreen" },
+        margin: { t: 5, b: 0, l: 0, r: 5 },
+        xaxis: { automargin: true,
+                 linecolor: "rgb(255,255,255)",
+                 gridcolor: "rgb(120,120,120)", tickfont: { size: 10 },},
+                //  title: {text: "Time (s)", standoff: 5, font: {size: 10}}},
+        yaxis: { automargin: true,
+                 linecolor: "rgb(255,255,255)",
+                 gridcolor: "rgb(120,120,120)",
+                 tickfont: { size: 10 },
+                 title: {text: "Kx Acc (m/s^2)", standoff: 10, font: {size: 10}},
+                 side: "right"},
+        showlegend: true,
+        legend: {
+            // place the legend in the middle at the top outside the graph
+            x: 0.5,
+            y: 1.2,
+            xanchor: "center",
+            bgcolor: "#141414",
+            orientation: "h",
+        }
+    };
+
+    const accelPLotConfig = {
+        staticPlot: true,
+        responsive: true,
+    };
+
+    Plotly.newPlot("accel-kx-graph-container", accelPlotData, accelPlotLayout, accelPLotConfig);
 
 }
 
@@ -105,6 +149,48 @@ function drawAltitudeGraph(){
 
 }
 
+function drawVelGraph(){
+
+    const velPlotData = [
+        { x: [], y: [], mode: "lines", name: "vert_vel", line: { color: "rgba(200,50,50,1)" }, fill: "tozeroy", fillcolor: "rgba(200,50,50,0.25)" },
+        { x: [], y: [], mode: "lines", name: "airspeed", line: { color: "rgba(50,50,200,1)" }, fill: "tozeroy", fillcolor: "rgba(50,50,200,0.25)" },
+    ];
+
+    const velPlotLayout = {
+        paper_bgcolor: "transparent",
+        plot_bgcolor: "#141414",
+        font: { size: 10, color: "darkseagreen" },
+        margin: { t: 5, b: 0, l: 0, r: 5 },
+        xaxis: { automargin: true,
+                 linecolor: "rgb(255,255,255)",
+                 gridcolor: "rgb(120,120,120)", tickfont: { size: 10 },},
+                //  title: {text: "Time (s)", standoff: 5, font: {size: 10}}},
+        yaxis: { automargin: true,
+                 linecolor: "rgb(255,255,255)",
+                 gridcolor: "rgb(120,120,120)",
+                 tickfont: { size: 10 },
+                 title: {text: "Velocity (m/s)", standoff: 10, font: {size: 10}},
+                 side: "right"},
+        showlegend: true,
+        legend: {
+            // place the legend in the middle at the top outside the graph
+            x: 0.5,
+            y: 1.2,
+            xanchor: "center",
+            bgcolor: "#141414",
+            orientation: "h",
+        }
+    };
+
+    const velPLotConfig = {
+        staticPlot: true,
+        responsive: true,
+    };
+
+    Plotly.newPlot("vel-graph-container", velPlotData, velPlotLayout, velPLotConfig);
+
+}
+
 //  ###################### LOAD VOLTAGE PANEL ######################
 
 const voltages_panel = document.getElementById("voltages-panel");
@@ -137,7 +223,7 @@ function loadVoltagePanel(){
         const voltage_value = document.createElement("div");
         voltage_value.className = "voltage-value";
         voltage_value.id = id;
-        voltage_value.innerHTML = "55.55" + config["voltages"][id]["unit"];
+        voltage_value.innerHTML = "0.00" + config["voltages"][id]["unit"];
 
         voltages_panel.appendChild(voltage_card);
         voltage_card.appendChild(voltage_title);
@@ -188,7 +274,7 @@ function populateIndicatorContainers(){
         const reading = document.createElement("div");
         reading.className = "dial-indicator-reading";
         reading.id = name + "-reading";
-        reading.innerHTML = "0";
+        reading.innerHTML = "0.0";
 
         const label = document.createElement("div");
         label.className = "dial-indicator-label";

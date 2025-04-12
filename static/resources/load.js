@@ -10,9 +10,11 @@
     await loadJS('./resources/update.js');
     
     // Draw the graphs
-    drawAccelGraph();
+    drawAccelBNOGraph();
+    drawAccelKxGraph();
     drawGyroGraph();
     drawAltitudeGraph();
+    drawVelGraph();
     
     // Load the voltage panel
     loadVoltagePanel();
@@ -22,4 +24,7 @@
 
     // Load the theme
     applyTheme();
+
+    // Get the telemetry filename in use
+    get_telemetry_filename();
 })();

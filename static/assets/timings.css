@@ -1,11 +1,12 @@
 .timings-display{
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: 40% 30% 30%;
+    grid-template-rows: 40% 20% 20% 20%;
     grid-template-columns: 15% 70% 15%;
     grid-auto-flow: row;
     grid-template-areas:
         "reset-button countdown start-button"
+        "timesinceserverupdate timesinceserverupdate timesinceserverupdate"
         "timesincegsudpate timesincegsudpate timesincegsudpate"
         "timesincerocketupdate timesincerocketupdate timesincerocketupdate";
 }
@@ -59,6 +60,15 @@
     justify-content: center;
     align-items: center;
     grid-area: timesincerocketupdate;
+    color: var(--font-color);
+    font-size: 1em;
+}
+
+.time-since-server-update-display{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-area: timesinceserverupdate;
     color: var(--font-color);
     font-size: 1em;
 }

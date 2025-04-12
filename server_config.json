@@ -1,0 +1,103 @@
+{
+    "SERVER_HEARTBEAT_INTERVAL": 0.5,
+    "DEFAULT_TELEMETRY_FILE": "telemetry.sqlite",
+    "DEFAULT_TELEMETRY_FILE_LOCATION": "./logs/telemetry/",
+
+    "DB_TABLE_SCHEMA": {
+        "table_name": "telemetry_log",
+        "strict": true,
+        "columns": {
+            "id": {
+                "type": "INTEGER PRIMARY KEY AUTOINCREMENT",
+                "primary_key": true,
+                "autoincrement": true
+            },
+            "type": {
+                "type": "TEXT",
+                "min_length": 1,
+                "max_length": 1
+            },
+            "time": {
+                "type": "INTEGER"
+            },
+            "state": {
+                "type": "INTEGER"
+            },
+            "temp": {
+                "type": "REAL"
+            },
+            "bno_x": {
+                "type": "REAL"
+            },
+            "bno_y": {
+                "type": "REAL"
+            },
+            "bno_z": {
+                "type": "REAL"
+            },
+            "kx_x": {
+                "type": "REAL"
+            },
+            "kx_y": {
+                "type": "REAL"
+            },
+            "kx_z": {
+                "type": "REAL"
+            },
+            "gyro_x": {
+                "type": "REAL"
+            },
+            "gyro_y": {
+                "type": "REAL"
+            },
+            "gyro_z": {
+                "type": "REAL"
+            },
+            "volt_batt": {
+                "type": "REAL"
+            },
+            "volt_3v3": {
+                "type": "REAL"
+            },
+            "volt_drogue": {
+                "type": "REAL"
+            },
+            "volt_main": {
+                "type": "REAL"
+            },
+            "volt_ign1": {
+                "type": "REAL"
+            },
+            "volt_ign2": {
+                "type": "REAL"
+            },
+            "volt_reg1": {
+                "type": "REAL"
+            },
+            "volt_reg2": {
+                "type": "REAL"
+            },
+            "volt_reg3": {
+                "type": "REAL"
+            },
+            "volt_reg4": {
+                "type": "REAL"
+            },
+            "lat": {
+                "type": "REAL"
+            },
+            "lon": {
+                "type": "REAL"
+            },
+            "alt": {
+                "type": "REAL"
+            },
+            "v_speed": {
+                "type": "REAL"
+            },
+            "airspeed": {
+                "type": "REAL"
+            }
+        }
+    }
+}

@@ -1,3 +1,4 @@
+@import url(genericelements.css);
 @import url(body.css);
 @import url(indicators.css);
 @import url(plots.css);
@@ -10,3 +11,4 @@
 @import url(voltages.css);
 @import url(gps.css);
 @import url(themes.css);
+@import url(telemetry_source.css);
